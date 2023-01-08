@@ -14,9 +14,7 @@
     color: white;
     width: 100%;
     padding: 20px;
-    margin: auto 0 0 0;
-    /* display: block; */
-    /* display: inline-block; */
+    margin-top: auto;
   }
 
   footer a {

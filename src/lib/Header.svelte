@@ -1,5 +1,6 @@
 <script>
   import { Link, useLocation } from "svelte-navigator";
+
   export let selectedView;
   export let views;
 
@@ -30,7 +31,7 @@
     text-align: center;
     background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, 0), black),
-      url("../assets/code-blur-half.jpg");
+      url("images/code-blur-half.jpg");
     background-position: 0;
   }
 

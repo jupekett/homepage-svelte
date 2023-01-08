@@ -19,6 +19,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "showdown": "^2.1.0",
     "svelte-navigator": "^3.2.2"
   }
 }

@@ -1,7 +1,9 @@
 <script>
-  import { Link } from "svelte-navigator";
+  import { Link, useLocation } from "svelte-navigator";
   export let selectedView;
   export let views;
+
+  const location = useLocation()
 </script>
 
 <header>
@@ -14,7 +16,7 @@
           on:click={() => {
             selectedView = views[index];
           }}
-          class="link{view.name === selectedView.name ? ' selected' : ''}"
+          class="link{view.path === $location.pathname ? ' selected' : ''}"
           >{view.name}</Link
         >
       </div>

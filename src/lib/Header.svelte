@@ -1,4 +1,5 @@
 <script>
+  import { Link } from "svelte-navigator";
   export let selectedView;
   export let views;
 </script>
@@ -7,15 +8,16 @@
   <h1>{selectedView.name}</h1>
   <nav>
     {#each views as view, index}
-      <button
-        id="button-{view.name.toLowerCase()}"
-        value={index}
-        on:click={() => {
-          selectedView = views[index];
-        }}
-        class={view.name === selectedView.name ? "selected" : ""}
-        >{view.name}</button
-      >
+      <div class="wrapper">
+        <Link
+          to={view.path}
+          on:click={() => {
+            selectedView = views[index];
+          }}
+          class="link{view.name === selectedView.name ? ' selected' : ''}"
+          >{view.name}</Link
+        >
+      </div>
     {/each}
   </nav>
 </header>
@@ -47,24 +49,29 @@
     background-color: #559955;
   }
 
-  nav button {
+  .wrapper {
+    width: 100%;
+  }
+
+  /* Link component doesn't understand CSS classes without this syntax */
+  .wrapper :global(.link) {
     width: 100%;
     padding: 10px;
     background-color: #338833;
-    color: white;
     border: 1px solid black;
     text-align: center;
     font-weight: normal;
     display: inline-block;
     text-decoration: none;
+    color: white;
   }
 
-  nav button:hover {
+  .wrapper :global(.link:hover) {
     background-color: #55aa55;
   }
 
-  nav .selected,
-  nav .selected:hover {
+  .wrapper :global(.selected),
+  .wrapper :global(.selected:hover) {
     background-color: #115511;
   }
 

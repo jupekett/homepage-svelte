@@ -1,0 +1,80 @@
+/* Reset */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* General definitions */
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Arial", sans-serif;
+  font-size: 1em;
+  height: 100%;
+}
+
+#app {
+    height: 100%
+}
+p {
+  margin: 0 0 1em 0;
+  text-align: justify;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0.5em 0;
+  font-family: "Lucida Console", monospace;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+a {
+  font-weight: bold;
+  font-family: "Lucida Console", monospace;
+}
+
+.a__disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: line-through;
+}
+
+em {
+  font-style: italic;
+}
+
+.centered-vertical {
+  text-align: center;
+}
+
+.margin-top {
+  margin-top: 2em;
+}
+
+ul {
+  /* padding: 0 0 0 1em; */
+  margin: 1em;
+}
+
+li {
+  list-style-position: inside;
+  margin: 5px 0;
+}

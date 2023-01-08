@@ -17,7 +17,7 @@
           on:click={() => {
             selectedView = views[index];
           }}
-          class="link{view.path === $location.pathname ? ' selected' : ''}"
+          class="link{view.path === $location.pathname ? ' selected a__disabled' : ''}"
           >{view.name}</Link
         >
       </div>

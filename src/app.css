@@ -79,3 +79,38 @@ li {
   list-style-position: inside;
   margin: 5px 0;
 }
+
+/* Images */
+
+img {
+  border: 2px solid #ddd;
+}
+
+.img-focused {
+  position: fixed;
+  max-width: 80vw;
+  max-height: 80vh;
+
+  opacity: 1;
+}
+
+.dim-layer {
+  position: fixed;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: rgba(0, 0, 0, 0.75);
+
+  display: grid;
+  place-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  img {
+    max-width: 100%;
+  }
+
+  .img-focused {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+}

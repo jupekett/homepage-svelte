@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { mdToHtml } from "../lib/helpers";
+  import ProjectCategory from "../lib/ProjectCategory.svelte";
+  import type { ProjectCategory as iProjectCategory } from "./Portfolio.types";
 
   // Project descriptions.
   // I want to write these in markdown and load dynamically,
@@ -12,23 +13,8 @@
   import multicastDescription from "../assets/projects/multicast/description.md?raw";
   import nuottiDescription from "../assets/projects/nuotti/description.md?raw";
 
-  type Project = {
-    id: string;
-    name: string;
-    description: string;
-    liveAddress?: string;
-    downtimeReason?: string;
-    repository: string;
-  };
-
-  type ProjectCategory = {
-    id: string;
-    name: string;
-    projects: Array<Project>;
-  };
-
   // For each project, create a folder `src/assets/projects/{project id}` containing necessary files
-  const projectsInCategories: Array<ProjectCategory> = [
+  const projectsInCategories: Array<iProjectCategory> = [
     {
       id: "node",
       name: "Node.js",
@@ -65,6 +51,8 @@
     {
       id: "java-aws",
       name: "Java on AWS",
+      description:
+        "These applications are written in Java and would be deployed to **AWS Elastic Beanstalk**.",
       projects: [
         {
           id: "ars",
@@ -101,73 +89,25 @@
       ],
     },
   ];
-
-  function getProjectFileUrl(path: string): string {
-    return new URL(path, import.meta.url).href;
-  }
-
-  function getImageUrl(project: string): string {
-    return getProjectFileUrl(`../assets/projects/${project}/original.png`);
-  }
-
-  function getThumbnailUrl(project:string): string {
-    return getProjectFileUrl(`../assets/projects/${project}/thumbnail.png`);
-  }
 </script>
 
 <div class="content--portfolio">
   <main>
-    <h1>Projects</h1>
-    <p>
-      Some relevant programming projects from personal life and my studies at
-      JYU. Language in study projects might be finnish.
-    </p>
-    <ul>
-      {#each projectsInCategories as category}
-        <li><a href="#{category.id}">{category.name}</a></li>
-      {/each}
-    </ul>
+    <div class="introduction">
+      <h1>Projects</h1>
+      <p>
+        Some relevant programming projects from personal life and my studies at
+        JYU. Language in study projects might be finnish.
+      </p>
+      <ul>
+        {#each projectsInCategories as category}
+          <li><a href="#{category.id}">{category.name}</a></li>
+        {/each}
+      </ul>
+    </div>
 
     {#each projectsInCategories as category}
-      <section id={category.id}>
-        <h2 class="centered-vertical margin-top">{category.name}</h2>
-
-        {#each category.projects as project}
-          {@const imageUrl = getImageUrl(project.id)}
-          {@const thumbnailUrl = getThumbnailUrl(project.id)}
-
-          <article class="project-card">
-            <div class="project-content">
-              <section class="project-info">
-                <h3 class="project-heading">{project.name}</h3>
-
-                {#await mdToHtml(project.description) then description}
-                  {@html description}
-                {/await}
-
-                <ul>
-                  {#if project.liveAddress || project.downtimeReason}
-                    <li>
-                      {#if !project.downtimeReason}
-                        <a href={project.liveAddress}>Live application</a>
-                      {:else}
-                        Application offline: {project.downtimeReason}
-                      {/if}
-                    </li>
-                  {/if}
-                  <li>
-                    <a href={project.repository}>Source code</a>
-                  </li>
-                </ul>
-              </section>
-
-              <a href={imageUrl}>
-                <img class="thumbnail" src={thumbnailUrl} alt={project.name} />
-              </a>
-            </div>
-          </article>
-        {/each}
-      </section>
+      <ProjectCategory {category} />
     {/each}
   </main>
 </div>
@@ -177,32 +117,13 @@
     margin: 0 auto;
     max-width: 800px;
     background-color: white;
-  }
-
-  .project-card {
-    margin: 1em 0;
-    padding: 1em;
-    border: 2px solid grey;
-    box-shadow: 5px 5px 5px grey;
-  }
-
-  .project-heading {
-    font-size: 1.5em;
-    margin: 0 0 0.5em 0;
-    text-align: center;
-  }
-
-  .project-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center
   }
 
-  .project-info {
-    margin: 0 1em;
-  }
-
-  .project-content .thumbnail {
-    max-width: 20em;
+  .introduction {
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   @media screen and (max-width: 800px) {
@@ -214,18 +135,6 @@
   @media screen and (max-width: 600px) {
     .content--portfolio {
       margin: 0 0.5em;
-    }
-
-    .project-card {
-      padding: 0.5em;
-    }
-
-    .project-info {
-      margin: 0;
-    }
-
-    .project-content {
-      flex-direction: column;
     }
   }
 </style>

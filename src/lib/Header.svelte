@@ -31,7 +31,7 @@
     text-align: center;
     background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, 0), black),
-      url("images/code-blur-half.jpg");
+      url("../assets/background.jpg");
     background-position: 0;
   }
 

@@ -9,7 +9,7 @@
 <style>
   footer {
     background-image: linear-gradient(black, rgba(0, 0, 0, 0.3)),
-      url("images/code-blur-half.jpg");
+      url("../assets/background.jpg");
     background-position: 0;
     color: white;
     width: 100%;

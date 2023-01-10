@@ -11,5 +11,5 @@ export type ProjectCategory = {
   id: string;
   name: string;
   description?: string;
-  projects: Array<Project>;
+  projects: Project[];
 };

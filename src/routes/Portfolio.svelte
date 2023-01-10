@@ -14,7 +14,7 @@
   import nuottiDescription from "../assets/projects/nuotti/description.md?raw";
 
   // For each project, create a folder `src/assets/projects/{project id}` containing necessary files
-  const projectsInCategories: Array<iProjectCategory> = [
+  const projectsInCategories: iProjectCategory[] = [
     {
       id: "node",
       name: "Node.js",

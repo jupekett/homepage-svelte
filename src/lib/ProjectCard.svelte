@@ -1,5 +1,6 @@
 <script lang="ts">
   import { mdToHtml } from "./helpers";
+  import Thumbnail from "./Thumbnail.svelte";
   import type { Project } from "../routes/Portfolio.types";
 
   function getProjectFileUrl(path: string): string {
@@ -45,9 +46,7 @@
       </ul>
     </section>
 
-    <a href={imageUrl}>
-      <img class="thumbnail" src={thumbnailUrl} alt={project.name} />
-    </a>
+    <Thumbnail {imageUrl} {thumbnailUrl} altText={project.name} />
   </div>
 </article>
 
@@ -74,9 +73,6 @@
     margin: 0 1em;
   }
 
-  .project-content .thumbnail {
-    max-width: 20em;
-  }
 
   @media screen and (max-width: 600px) {
     .project-card {

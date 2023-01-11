@@ -87,10 +87,6 @@
     box-shadow: 5px 5px 5px grey;
   }
 
-  .blog-post a {
-    font-weight: normal;
-  }
-
   .blog-timestamp {
     font-size: 1em;
     font-weight: bold;

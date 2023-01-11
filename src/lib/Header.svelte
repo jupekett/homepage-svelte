@@ -4,7 +4,7 @@
   export let selectedView;
   export let views;
 
-  const location = useLocation()
+  const location = useLocation();
 </script>
 
 <header>
@@ -17,8 +17,9 @@
           on:click={() => {
             selectedView = views[index];
           }}
-          class="link{view.path === $location.pathname ? ' selected a__disabled' : ''}"
-          >{view.name}</Link
+          class="link{view.path === $location.pathname
+            ? ' selected a__disabled'
+            : ''}">{view.name}</Link
         >
       </div>
     {/each}
@@ -50,6 +51,7 @@
     display: flex;
     justify-content: center;
     background-color: #559955;
+    font-family: "Lucida Console", monospace;
   }
 
   .wrapper {

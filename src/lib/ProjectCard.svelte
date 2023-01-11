@@ -17,6 +17,7 @@
 
   export let project: Project;
 
+  const description = mdToHtml(project.description);
   const imageUrl = getImageUrl(project.id);
   const thumbnailUrl = getThumbnailUrl(project.id);
 </script>
@@ -26,9 +27,7 @@
     <section class="project-info">
       <h3 class="project-heading">{project.name}</h3>
 
-      {#await mdToHtml(project.description) then description}
-        {@html description}
-      {/await}
+      {@html description}
 
       <ul>
         {#if project.liveAddress || project.downtimeReason}
@@ -72,7 +71,6 @@
   .project-info {
     margin: 0 1em;
   }
-
 
   @media screen and (max-width: 600px) {
     .project-card {

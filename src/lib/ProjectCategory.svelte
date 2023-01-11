@@ -4,15 +4,15 @@
   import type { ProjectCategory } from "../routes/Portfolio.types";
 
   export let category: ProjectCategory;
+
+  const description = mdToHtml(category.description);
 </script>
 
 <section id={category.id}>
   <h2 class="centered-vertical margin-top">{category.name}</h2>
 
   {#if category.description}
-    {#await mdToHtml(category.description) then categoryDescription}
-      {@html categoryDescription}
-    {/await}
+    {@html description}
   {/if}
 
   {#each category.projects as project}

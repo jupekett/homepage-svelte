@@ -6,8 +6,7 @@
     const imageSource = anchor.href;
 
     const dimLayer = dimTheBackground();
-    const image = showFocusedImage(imageSource, dimLayer);
-    // image.focus();
+    showFocusedImage(imageSource, dimLayer);
   };
 
   function dimTheBackground(): HTMLElement {
@@ -49,7 +48,7 @@
   }
 
   function addFadeOutListeners(element: HTMLElement, durationSeconds: number) {
-    const removeElementAndKeyListener = (element, durationSeconds) => {
+    const removeElementAndKeyListener = (element: HTMLElement, durationSeconds: number) => {
       setTimeout(() => {
         removeSelf(element);
         // Keyup listener needs to be removed from document every time the image preview is dismissed.

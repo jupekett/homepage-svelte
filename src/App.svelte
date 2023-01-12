@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   import { Router, Route } from "svelte-navigator";
 
   // views
   import Home from "./routes/Home.svelte";
   import Portfolio from "./routes/Portfolio.svelte";
   import Blog from "./routes/Blog.svelte";
-  import Playground from "./routes/Playground.svelte"
+  import Playground from "./routes/Playground.svelte";
 
   // shared components
   import Header from "./lib/Header.svelte";
@@ -16,9 +16,13 @@
     { name: "Portfolio", component: Portfolio, path: "/portfolio" },
     { name: "Blog", component: Blog, path: "/blog" },
   ];
-  
+
   if (import.meta.env.DEV) {
-    views.push({ name: "Devground", component: Playground, path: "/devground" })
+    views.push({
+      name: "Devground",
+      component: Playground,
+      path: "/devground",
+    });
   }
   // TODO error page or route to home when route not found?
 

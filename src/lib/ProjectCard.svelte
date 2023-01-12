@@ -45,7 +45,7 @@
       </ul>
     </section>
 
-    <Thumbnail {imageUrl} {thumbnailUrl} altText={project.name} />
+    <Thumbnail {project} />
   </div>
 </article>
 

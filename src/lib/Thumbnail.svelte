@@ -1,107 +1,96 @@
 <script lang="ts">
-  const focusImage = (clickEvent: Event) => {
-    clickEvent.preventDefault();
-    const target = clickEvent.target as HTMLElement;
-    const anchor = target.parentElement.closest("a");
-    const imageSource = anchor.href;
+  import { fade } from "svelte/transition";
+  import type { Project } from "../routes/Portfolio.types";
 
-    const dimLayer = dimTheBackground();
-    showFocusedImage(imageSource, dimLayer);
-  };
-
-  function dimTheBackground(): HTMLElement {
-    const dimLayer = document.createElement("div");
-    dimLayer.className = "dim-layer";
-    addFadeInOut(dimLayer);
-
-    document.body.appendChild(dimLayer);
-    return dimLayer;
+  function getImageUrl(imagePath: string): string {
+    return new URL(`../assets/projects/${imagePath}`, import.meta.url).href;
   }
 
-  function showFocusedImage(source: string, parent: HTMLElement): HTMLElement {
-    const image = document.createElement("img");
-    image.className = "img-focused";
-    image.src = source;
+  export let project: Project;
 
-    parent.appendChild(image);
-    return image;
-  }
+  const imageUrl = getImageUrl(`${project.id}/original.png`);
+  const thumbUrl = getImageUrl(`${project.id}/thumbnail.png`);
+  const altText = `Larger image of ${project.name}`;
 
-  function addFadeInOut(element: HTMLElement) {
-    const durationSeconds = 0.3;
-    element.style.transition = `opacity ${durationSeconds}s`;
-
-    fadeIn(element);
-    addFadeOutListeners(element, durationSeconds);
-  }
-
-  function fadeIn(element: HTMLElement) {
-    element.style.opacity = "0";
-    setTimeout(() => {
-      element.style.opacity = "1";
-    }, 100); // need delay for element to render with 0 opacity first
-  }
-
-  function fadeOut(element: HTMLElement) {
-    element.style.opacity = "0";
-    element.style.pointerEvents = "none"; // only block first click
-  }
-
-  function addFadeOutListeners(element: HTMLElement, durationSeconds: number) {
-    const removeElementAndKeyListener = (element: HTMLElement, durationSeconds: number) => {
-      setTimeout(() => {
-        removeSelf(element);
-        // Keyup listener needs to be removed from document every time the image preview is dismissed.
-        // Looks like Svelte doesn't need this?
-        // document.removeEventListener("keyup", fadeOutListener);
-      }, durationSeconds * 1000);
-    };
-
-    const fadeOutListener = () => {
-      fadeOut(element);
-      removeElementAndKeyListener(element, durationSeconds);
-    };
-
-    element.addEventListener("click", fadeOutListener);
-    document.addEventListener("keyup", fadeOutListener);
-  }
-
-  function removeSelf(element: HTMLElement) {
-    if (element.parentNode === null) {
-      // Element is already removed, or is important such as document
-      return;
-    }
-    element.parentNode.removeChild(element);
-  }
-
-  // // Idea for cleaner fadeout implementation. Doesn't work.
-  // function closeFocusedImage(event: Event) {
-  //   console.log('trying to close image')
-  //   const image = event.target as HTMLElement:
-  //   const dimLayer = image.parentNode as HTMLElement;
-  //   fadeOut(dimLayer);
-  // }
-
-  export let imageUrl: string;
-  export let thumbnailUrl: string;
-  export let altText: string;
+  let isFocused = false;
+  let isZoomed = false;
 </script>
 
-<a
-  href={imageUrl}
-  aria-label={`Larger image of ${altText}`}
-  title={`Larger image of ${altText}`}
->
+<a href={imageUrl} aria-label={altText} title={altText}>
   <img
-    src={thumbnailUrl}
-    alt={altText}
-    on:click={(event) => focusImage(event)}
+    src={thumbUrl}
+    alt={project.name}
+    on:click|preventDefault={() => {
+      isFocused = true;
+    }}
   />
-  <!-- I tried to add  on:keyup={event => closeFocusedImage(event)} or similar, but could not target the new centered img element -->
 </a>
+
+{#if isFocused}
+  <div
+    class="dim-layer"
+    transition:fade={{ duration: 100 }}
+    on:click={() => {
+      isFocused = false;
+      isZoomed = false;
+    }}
+  >
+    <img
+      src={imageUrl}
+      class="img-focused"
+      class:isZoomed
+      alt={altText}
+      on:click|stopPropagation={() => {
+        isZoomed = !isZoomed;
+        console.log(`image is ${isZoomed ? "" : "not"} zoomed`);
+      }}
+    />
+  </div>
+{/if}
+
+<!-- Escape key closes the focused image -->
+<svelte:window
+  on:keyup={(event) => {
+    if (event.key === "Escape") {
+      isFocused = false;
+      isZoomed = false;
+    }
+  }}
+/>
 
 <style>
   img {
     max-width: 20em;
+  }
+
+  .img-focused {
+    position: fixed;
+    max-height: 80vh;
+    max-width: 80vw;
+    height: 100%;
+
+    transition: all 0.5s;
+  }
+
+  .isZoomed {
+    max-height: 100vh;
+    max-width: 100vw;
+    height: 150%;
+    width: auto;
+  }
+
+  .dim-layer {
+    display: grid;
+    place-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    min-height: 100vh;
+    min-width: 100vw;
+
+    background: rgba(0, 0, 0, 0.75);
   }
 </style>

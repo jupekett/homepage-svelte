@@ -35,7 +35,6 @@
       day: "numeric",
       month: "numeric",
       year: "numeric",
-
     };
     const timeOptions: Intl.DateTimeFormatOptions = {
       hour: "numeric",
@@ -52,11 +51,11 @@
   }
 </script>
 
-<div class="content--blog">
-  <main>
+  <main class="content--blog">
+    <h1>Some thoughts</h1>
     {#await importPosts() then posts}
       {#if posts.length < 1}
-        <h1>No posts to show</h1>
+        <p>Couldn't load posts. Bummer!</p>
       {/if}
       {#each posts as post}
         <article>
@@ -70,7 +69,6 @@
       {/each}
     {/await}
   </main>
-</div>
 
 <style>
   .content--blog {
@@ -85,6 +83,19 @@
     width: 100%;
     border: 2px solid grey;
     box-shadow: 5px 5px 5px grey;
+  }
+  .blog-post :global(h1) {
+    font-size: 1.5em;
+    color: hsl(100 50% 20%);
+  }
+
+  .blog-post :global(h2) {
+    font-size: 1.3em;
+    color: hsl(100 50% 30%);
+  }
+
+  .blog-post :global(h3) {
+    font-size: 1.2em;
   }
 
   .blog-timestamp {

@@ -50,22 +50,28 @@
 </article>
 
 <style>
+  .project-content {
+    display: flex;
+    align-items: center;
+  }
+
   .project-card {
     margin: 1em 0;
     padding: 1em;
+
+    background-color: var(--background-color-card);
+
     border: 2px solid grey;
     box-shadow: 5px 5px 5px grey;
   }
 
-  .project-heading {
-    font-size: 1.5em;
-    margin: 0 0 0.5em 0;
-    text-align: center;
+  .project-info {
+    align-self: flex-start;
   }
 
-  .project-content {
-    display: flex;
-    align-items: center; /* center images on mobile */
+  .project-heading {
+    margin: 0 0 0.5em 0;
+    text-align: center;
   }
 
   .project-info {
@@ -75,6 +81,7 @@
   @media screen and (max-width: 600px) {
     .project-card {
       padding: 0.5em;
+      align-items: center;
     }
 
     .project-info {

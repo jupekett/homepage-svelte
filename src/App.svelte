@@ -51,12 +51,20 @@
   }
 
   #left-side {
-    background: linear-gradient(to right, hsl(80 20% 50%) 0%, white 60%);
+    background: linear-gradient(
+      to right,
+      var(--background-color-dark) 0%,
+      var(--background-color-lightest) 60%
+    );
     flex-grow: 1;
   }
 
   #right-side {
-    background: linear-gradient(to left, hsl(80 20% 50%) 0%, white 60%);
+    background: linear-gradient(
+      to left,
+      var(--background-color-dark) 0%,
+      var(--background-color-lightest) 60%
+    );
     flex-grow: 1;
   }
 

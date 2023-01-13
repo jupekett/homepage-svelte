@@ -71,6 +71,9 @@
   </main>
 
 <style>
+  h1 {
+    text-align: center;
+  }
   .content--blog {
     margin: 0 auto;
     max-width: 600px;
@@ -81,26 +84,31 @@
     margin: 1em 0;
     padding: 1em;
     width: 100%;
+
     border: 2px solid grey;
+    background-color: var(--background-color-card);
+
     box-shadow: 5px 5px 5px grey;
   }
   .blog-post :global(h1) {
-    font-size: 1.5em;
-    color: hsl(100 50% 20%);
+    font-size: 2.2em;
+    /* color: hsl(100 50% 10%); */
+    /* color: hsl(20 80% 50% / 0.7); */
   }
 
   .blog-post :global(h2) {
-    font-size: 1.3em;
-    color: hsl(100 50% 30%);
+    font-size: 1.8em;
+    /* color: hsl(20 80% 50% / 0.9); */
   }
 
   .blog-post :global(h3) {
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
   }
 
   .blog-timestamp {
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: bold;
+    font-family: monospace;
     color: grey;
   }
 

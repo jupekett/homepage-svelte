@@ -37,10 +37,12 @@
   }
 
   header h1 {
-    display: inline-block;
-    width: fit-content;
-    padding: 5px 10px;
     color: white;
+
+    margin: 5px;
+    font-size: 2em;
+
+    font-family: "Lucida Sans", monospace;
     text-shadow: -5px 0 5px black, 0 5px 5px black, 5px 0 5px black,
       0 -5px 5px black;
   }

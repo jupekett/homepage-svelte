@@ -10,14 +10,31 @@
 
 /* General definitions */
 
+/* color themes */
+:root {
+  --font-color-lightest: hsl(50 20% 40%);
+  --font-color-lighter: hsl(50 20% 30%);
+  --font-color: hsl(50 20% 20%);
+  --font-color-darker: hsl(50 20% 10%);
+
+  --font-color-accent: hsl(20 60% 50%);
+
+  --background-color-dark: hsl(80 10% 50%);
+  --background-color-light: hsl(0 0% 90%);
+  --background-color-lightest: white;
+
+  --background-color-card: hsl(220 10% 95%);
+}
+
 html {
   height: 100%;
+  line-height: 1.5;
 }
 
 body {
-  font-family: "Arial", sans-serif;
-  font-size: 1em;
   height: 100%;
+  font-family: sans-serif;
+  font-size: 1em;
 }
 
 #app {
@@ -29,22 +46,36 @@ body {
 p {
   margin: 0 0 1em 0;
   text-align: justify;
+  color: var(--font-color-darker);
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   margin: 0.5em 0;
-  font-family: "Lucida Console", monospace;
+  font-family: monospace;
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2.5em;
+  color: var(--font-color-lightest);
 }
 
 h2 {
-  font-size: 1.8em;
+  font-size: 2.3em;
+  color: var(--font-color-lighter);
+}
+
+h3 {
+  font-size: 1.9em;
+}
+
+h3,
+h4 {
+  color: var(--font-color);
 }
 
 li a {
@@ -71,13 +102,12 @@ em {
 }
 
 ul {
-  /* padding: 0 0 0 1em; */
   margin: 1em;
 }
 
 li {
-  list-style-position: inside;
-  margin: 5px 0;
+  list-style-position: outside;
+  margin: 0.5em 0 0 1.5em;
 }
 
 /* Images */

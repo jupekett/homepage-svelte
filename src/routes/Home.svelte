@@ -2,7 +2,7 @@
 
 <main class="content--home">
   <article>
-    <h1>Whoami?</h1>
+    <h1>Whoami</h1>
     <p>Hi! I'm Juho, a software developer.</p>
     <p>
       Besides my work with public cloud software, I'm also working towards a
@@ -20,7 +20,7 @@
   </article>
 
   <article>
-    <h1>Links to my online presence</h1>
+    <h2>Links to my online presence</h2>
     <ul id="links">
       <li>
         <a href="https://www.linkedin.com/in/juho-kettunen-93b18819b/"

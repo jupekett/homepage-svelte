@@ -1,25 +1,23 @@
 <script></script>
 
-<div class="content--home">
-  <main>
-    <article>
-      <h1>Whoami?</h1>
-      <p>Hi! I'm Juho, a software developer.</p>
-      <p>
-        Besides my work with public cloud software, I'm also working towards a
-        master's degree in information technology at University of Jyväskylä. My <a
-          href="https://www.linkedin.com/in/juho-kettunen-93b18819b/"
-          >LinkedIn profile</a
-        > has the details.
-      </p>
-      <p>
-        While I greatly enjoy coding, I'm also eager to learn the other details
-        of how software development is best conducted in the field:
-        architecture, testing, deployment, maintenance, refactoring, style
-        considerations, documentation, version control and so on.
-      </p>
-    </article>
-  </main>
+<main class="content--home">
+  <article>
+    <h1>Whoami?</h1>
+    <p>Hi! I'm Juho, a software developer.</p>
+    <p>
+      Besides my work with public cloud software, I'm also working towards a
+      master's degree in information technology at University of Jyväskylä. My <a
+        href="https://www.linkedin.com/in/juho-kettunen-93b18819b/"
+        >LinkedIn profile</a
+      > has the details.
+    </p>
+    <p>
+      While I greatly enjoy coding, I'm also eager to learn the other details of
+      how software development is best conducted in the field: architecture,
+      testing, deployment, maintenance, refactoring, style considerations,
+      documentation, version control and so on.
+    </p>
+  </article>
 
   <article>
     <h1>Links to my online presence</h1>
@@ -37,7 +35,7 @@
       </li>
     </ul>
   </article>
-</div>
+</main>
 
 <style>
   .content--home {

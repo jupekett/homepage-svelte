@@ -91,34 +91,29 @@
   ];
 </script>
 
-<div class="content--portfolio">
-  <main>
-    <div class="introduction">
-      <h1>Projects</h1>
-      <p>
-        Some relevant programming projects from personal life and my studies at
-        JYU. Language in study projects might be finnish.
-      </p>
-      <ul>
-        {#each projectsInCategories as category}
-          <li><a href="#{category.id}">{category.name}</a></li>
-        {/each}
-      </ul>
-    </div>
+<main class="content--portfolio">
+  <div class="introduction">
+    <h1>Projects</h1>
+    <p>
+      Some relevant programming projects from personal life and my studies at
+      JYU. Language in study projects might be finnish.
+    </p>
+    <ul>
+      {#each projectsInCategories as category}
+        <li><a href="#{category.id}">{category.name}</a></li>
+      {/each}
+    </ul>
+  </div>
 
-    {#each projectsInCategories as category}
-      <ProjectCategory {category} />
-    {/each}
-  </main>
-</div>
+  {#each projectsInCategories as category}
+    <ProjectCategory {category} />
+  {/each}
+</main>
 
 <style>
   .content--portfolio {
-    margin: 0 auto;
     max-width: 800px;
     background-color: white;
-    display: flex;
-    align-items: center
   }
 
   .introduction {

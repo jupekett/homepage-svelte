@@ -29,7 +29,7 @@
 {#if isFocused}
   <div
     class="dim-layer"
-    transition:fade={{ duration: 100 }}
+    transition:fade={{ duration: 150 }}
     on:click={() => {
       isFocused = false;
       isZoomed = false;
@@ -42,7 +42,6 @@
       alt={altText}
       on:click|stopPropagation={() => {
         isZoomed = !isZoomed;
-        console.log(`image is ${isZoomed ? "" : "not"} zoomed`);
       }}
     />
   </div>
@@ -67,15 +66,13 @@
     position: fixed;
     max-height: 80vh;
     max-width: 80vw;
-    height: 100%;
-
     transition: all 0.5s;
   }
 
   .isZoomed {
     max-height: 100vh;
     max-width: 100vw;
-    height: 150%;
+    height: auto;
     width: auto;
   }
 

@@ -65,7 +65,7 @@
 
   .project-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* center images on mobile */
   }
 
   .project-info {

@@ -34,8 +34,33 @@
   <Header bind:selectedView {views} />
   {#each views as view}
     <Route path={view.path}>
-      <svelte:component this={view.component} />
+      <div id="container-middle">
+        <div id="left-side" />
+        <svelte:component this={view.component} />
+        <div id="right-side" />
+      </div>
     </Route>
   {/each}
   <Footer />
 </Router>
+
+<style>
+  #container-middle {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  #left-side {
+    background: linear-gradient(to right, hsl(80 20% 50%) 0%, white 60%);
+    flex-grow: 1;
+  }
+
+  #right-side {
+    background: linear-gradient(to left, hsl(80 20% 50%) 0%, white 60%);
+    flex-grow: 1;
+  }
+
+  :global(main) {
+    padding: 1em;
+  }
+</style>

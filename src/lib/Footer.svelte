@@ -14,7 +14,6 @@
     color: white;
     width: 100%;
     padding: 20px;
-    margin-top: auto;
   }
 
   footer a {

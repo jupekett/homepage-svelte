@@ -12,15 +12,23 @@
   import Footer from "./lib/Footer.svelte";
 
   const views = [
-    { name: "Home", component: Home, path: "/" },
-    { name: "Portfolio", component: Portfolio, path: "/portfolio" },
-    { name: "Blog", component: Blog, path: "/blog" },
+    {
+      path: "/",
+      linkText: "Home",
+      component: Home,
+    },
+    {
+      path: "/portfolio",
+      linkText: "Portfolio",
+      component: Portfolio,
+    },
+    { path: "/blog", linkText: "Blog", component: Blog },
   ];
 
   const needToTryThingsOut = false;
   if (import.meta.env.DEV && needToTryThingsOut) {
     views.push({
-      name: "Devground",
+      linkText: "Devground",
       component: Playground,
       path: "/devground",
     });
@@ -28,10 +36,10 @@
   // TODO error page or route to home when route not found?
 
   let selectedView = views[0];
-  $: document.title = `${selectedView.name} - jupekett`;
+  $: document.title = `${selectedView.linkText} - jupekett`;
 </script>
 
-<Router>
+<Router basepath="/homepage-svelte">
   <Header bind:selectedView {views} />
   {#each views as view}
     <Route path={view.path}>
@@ -68,5 +76,4 @@
     );
     flex-grow: 1;
   }
-
 </style>

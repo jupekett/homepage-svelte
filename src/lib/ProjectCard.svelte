@@ -3,30 +3,15 @@
   import Thumbnail from "./Thumbnail.svelte";
   import type { Project } from "../routes/Portfolio.types";
 
-  function getProjectFileUrl(path: string): string {
-    return new URL(path, import.meta.url).href;
-  }
-
-  function getImageUrl(project: string): string {
-    return getProjectFileUrl(`../assets/projects/${project}/original.png`);
-  }
-
-  function getThumbnailUrl(project: string): string {
-    return getProjectFileUrl(`../assets/projects/${project}/thumbnail.png`);
-  }
-
   export let project: Project;
 
   const description = mdToHtml(project.description);
-  const imageUrl = getImageUrl(project.id);
-  const thumbnailUrl = getThumbnailUrl(project.id);
 </script>
 
-<article class="project-card">
-  <div class="project-content">
-    <section class="project-info">
-      <h3 class="project-heading">{project.name}</h3>
-
+<article class="card">
+  <h3 class="project-heading">{project.name}</h3>
+  <section class="project-contents">
+    <article class="project-description">
       {@html description}
 
       <ul>
@@ -43,29 +28,21 @@
           <a href={project.repository}>Source code</a>
         </li>
       </ul>
-    </section>
+    </article>
 
-    <Thumbnail {project} />
-  </div>
+    <article class="project-image">
+      <Thumbnail {project} />
+    </article>
+  </section>
 </article>
 
 <style>
-  .project-content {
+  .project-contents {
     display: flex;
     align-items: center;
   }
 
-  .project-card {
-    margin: 1em 0;
-    padding: 1em;
-
-    background-color: var(--background-color-card);
-
-    border: 2px solid grey;
-    box-shadow: 5px 5px 5px grey;
-  }
-
-  .project-info {
+  .project-description {
     align-self: flex-start;
   }
 
@@ -74,21 +51,21 @@
     text-align: center;
   }
 
-  .project-info {
+  .project-description {
     margin: 0 1em;
+    flex: 1 1 100%;
+  }
+
+  .project-image {
+    flex: 1 1 100%;
   }
 
   @media screen and (max-width: 600px) {
-    .project-card {
-      padding: 0.5em;
-      align-items: center;
-    }
-
-    .project-info {
+    .project-contents {
       margin: 0;
     }
 
-    .project-content {
+    .project-contents {
       flex-direction: column;
     }
   }

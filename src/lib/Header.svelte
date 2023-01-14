@@ -60,7 +60,8 @@
     width: 100%;
   }
 
-  /* Link component doesn't understand CSS classes without this syntax */
+/* Link component creates an anchor with class "link".
+  :global is needed to apply styles to child components. */
   .wrapper :global(.link) {
     width: 100%;
     padding: 10px;
@@ -83,8 +84,5 @@
   }
 
   @media screen and (max-width: 600px) {
-    nav {
-      width: 100%;
-    }
   }
 </style>

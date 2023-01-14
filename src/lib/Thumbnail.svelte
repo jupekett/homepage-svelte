@@ -59,7 +59,7 @@
 
 <style>
   img {
-    max-width: 20em;
+    max-width: 100%;
   }
 
   .img-focused {

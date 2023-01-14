@@ -10,8 +10,8 @@
 
 /* General definitions */
 
-/* color themes */
 :root {
+  /* color themes */
   --font-color-lightest: hsl(50 20% 40%);
   --font-color-lighter: hsl(50 20% 30%);
   --font-color: hsl(50 20% 20%);
@@ -24,6 +24,10 @@
   --background-color-lightest: white;
 
   --background-color-card: hsl(220 10% 95%);
+
+  /* sizes */
+  --content-width: 600px;
+  --content-width-wider: 800px;
 }
 
 html {
@@ -41,12 +45,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-}
-
-p {
-  margin: 0 0 1em 0;
-  text-align: justify;
-  color: var(--font-color-darker);
 }
 
 h1,
@@ -78,19 +76,56 @@ h4 {
   color: var(--font-color);
 }
 
+p {
+  margin: 0 0 1em 0;
+  text-align: justify;
+  color: var(--font-color-darker);
+}
+
+em {
+  font-style: italic;
+}
+
+ul {
+  margin: 1em;
+}
+
+li {
+  margin: 0.5em 0 0 1.5em;
+  list-style-position: outside;
+  color: var(--font-color-darker);
+  text-align: justify;
+}
+
 li a {
   font-weight: bold;
   font-family: "Lucida Console", monospace;
+}
+
+main {
+  width: var(--content-width-wider);
+}
+
+img {
+  border: 2px solid #ddd;
+}
+
+/* classes */
+
+.card {
+  margin: 1em;
+  padding: 1em;
+
+  background-color: var(--background-color-card);
+
+  border: 2px solid grey;
+  box-shadow: 5px 5px 5px grey;
 }
 
 .a__disabled {
   pointer-events: none;
   cursor: default;
   text-decoration: line-through;
-}
-
-em {
-  font-style: italic;
 }
 
 .centered-vertical {
@@ -101,28 +136,15 @@ em {
   margin-top: 2em;
 }
 
-ul {
-  margin: 1em;
-}
-
-li {
-  list-style-position: outside;
-  margin: 0.5em 0 0 1.5em;
-}
-
-/* Images */
-
-img {
-  border: 2px solid #ddd;
-}
-
 @media screen and (max-width: 600px) {
-  img {
-    max-width: 100%;
+  .card {
+    margin: 1em 0;
+    padding: 1em 0.5;
+    align-items: center;
+    /* max-width: calc(var(--content-width) - 2em); */
   }
 
-  .img-focused {
-    max-width: 95vw;
-    max-height: 95vh;
+  main {
+    margin: 0;
   }
 }

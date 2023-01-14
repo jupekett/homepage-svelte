@@ -17,7 +17,8 @@
     { name: "Blog", component: Blog, path: "/blog" },
   ];
 
-  if (import.meta.env.DEV) {
+  const needToTryThingsOut = false;
+  if (import.meta.env.DEV && needToTryThingsOut) {
     views.push({
       name: "Devground",
       component: Playground,
@@ -68,7 +69,4 @@
     flex-grow: 1;
   }
 
-  :global(main) {
-    padding: 1em;
-  }
 </style>

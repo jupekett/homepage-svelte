@@ -92,7 +92,7 @@
 </script>
 
 <main class="content--portfolio">
-  <div class="introduction">
+  <section class="introduction">
     <h1>Projects</h1>
     <p>
       Some relevant programming projects from personal life and my studies at
@@ -103,7 +103,7 @@
         <li><a href="#{category.id}">{category.name}</a></li>
       {/each}
     </ul>
-  </div>
+  </section>
 
   {#each projectsInCategories as category}
     <ProjectCategory {category} />
@@ -112,12 +112,11 @@
 
 <style>
   .content--portfolio {
-    max-width: 800px;
     background-color: white;
   }
 
   .introduction {
-    max-width: 600px;
+    max-width: var(--content-width);
     margin: 0 auto;
   }
 

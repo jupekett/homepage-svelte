@@ -39,9 +39,12 @@
 
 <style>
   .content--home {
-    margin: 0 auto;
-    max-width: 600px;
     background-color: white;
+  }
+
+  article {
+    margin: 0 auto;
+    max-width: var(--content-width);
   }
 
   @media screen and (max-width: 600px) {

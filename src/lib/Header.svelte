@@ -8,7 +8,7 @@
 </script>
 
 <header>
-  <h1>{selectedView.name}</h1>
+  <h1>jupekett's home page</h1>
   <nav>
     {#each views as view, index}
       <div class="wrapper">
@@ -19,7 +19,7 @@
           }}
           class="link{view.path === $location.pathname
             ? ' selected a__disabled'
-            : ''}">{view.name}</Link
+            : ''}">{view.linkText}</Link
         >
       </div>
     {/each}
@@ -49,7 +49,7 @@
 
   nav {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: var(--content-width);
     display: flex;
     justify-content: center;
     background-color: #559955;

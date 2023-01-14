@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && shx cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "deploy": "npx gh-pages -d dist"
@@ -15,6 +15,7 @@
     "@tsconfig/svelte": "^3.0.0",
     "@types/showdown": "^2.0.0",
     "gh-pages": "^4.0.0",
+    "shx": "^0.3.4",
     "svelte": "^3.54.0",
     "svelte-check": "^2.10.0",
     "tslib": "^2.4.1",

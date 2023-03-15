@@ -53,7 +53,9 @@
 
   <main class="content--blog">
     <h1>Some thoughts</h1>
-    {#await importPosts() then posts}
+    {#await importPosts()}
+    <p class="centered-vertical">Loading posts...</p>
+    {:then posts}
       {#if posts.length < 1}
         <p>Couldn't load posts. Bummer!</p>
       {/if}

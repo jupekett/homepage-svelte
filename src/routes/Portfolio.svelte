@@ -12,9 +12,22 @@
   import ipDescription from "../assets/projects/ip/description.md?raw";
   import multicastDescription from "../assets/projects/multicast/description.md?raw";
   import nuottiDescription from "../assets/projects/nuotti/description.md?raw";
+  import homepageDescription from "../assets/projects/homepage/description.md?raw";
 
   // For each project, create a folder `src/assets/projects/{project id}` containing necessary files
   const projectsInCategories: iProjectCategory[] = [
+    {
+      id: "svelte",
+      name: "Svelte",
+      projects: [
+        {
+          id: "homepage",
+          name: "My homepage",
+          description: homepageDescription,
+          repository: "https://github.com/jupekett/homepage-svelte",
+        }
+      ]
+    },
     {
       id: "node",
       name: "Node.js",

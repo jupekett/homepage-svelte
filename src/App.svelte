@@ -6,6 +6,7 @@
   import Portfolio from "./routes/Portfolio.svelte";
   import Blog from "./routes/Blog.svelte";
   import Playground from "./routes/Playground.svelte";
+  import Empty from "./routes/Empty.svelte";
 
   // shared components
   import Header from "./lib/Header.svelte";
@@ -33,7 +34,6 @@
       path: "/devground",
     });
   }
-  // TODO error page or route to home when route not found?
 
   let selectedView = views[0];
   $: document.title = `${selectedView.linkText} - jupekett`;
@@ -50,6 +50,13 @@
       </div>
     </Route>
   {/each}
+  <Route>
+    <div id="container-middle">
+      <div id="left-side" />
+      <svelte:component this={Empty} />
+      <div id="right-side" />
+    </div>
+  </Route>
   <Footer />
 </Router>
 

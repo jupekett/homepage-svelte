@@ -24,6 +24,7 @@
           id: "homepage",
           name: "My homepage",
           description: homepageDescription,
+          liveAddress: "https://jupekett.github.io/homepage-svelte/portfolio",
           repository: "https://github.com/jupekett/homepage-svelte",
         }
       ]
